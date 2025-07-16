@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة الطالب - جامعة بنها</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://i.imgur.com/yo7Ym6F.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      color: #fff;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .result-img {
+      display: none;
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box" id="loginBox">
+    <h2>بوابة الخدمات الطلابية</h2>
+    <p>نظام ابن الهيثم - جامعة بنها</p>
+    <input type="text" id="username" placeholder="اسم المستخدم">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button onclick="login()">دخول</button>
+    <div class="error" id="error"></div>
+  </div>
+
+  <div style="display: none; flex-direction: column; align-items: center;" id="resultBox">
+    <img src="https://i.imgur.com/WN4vVei.jpeg" class="result-img" id="resultImage">
+    <button style="margin-top: 20px;" onclick="goBack()">رجوع</button>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      const error = document.getElementById('error');
+
+      if (user === '23110213' && pass === '12345678900') {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('resultBox').style.display = 'flex';
+        document.getElementById('resultImage').style.display = 'block';
+      } else {
+        error.textContent = '❌ اسم المستخدم أو كلمة المرور غير صحيحة';
+      }
+    }
+
+    function goBack() {
+      document.getElementById('resultBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+      document.getElementById('error').textContent = '';
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
+
+</body>
+</html>
